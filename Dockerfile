@@ -21,4 +21,4 @@ WORKDIR /chatroom
 
 # Compile chatroom with sbt
 RUN \
-  sbt clean test compile
+  sbt clean test dist
