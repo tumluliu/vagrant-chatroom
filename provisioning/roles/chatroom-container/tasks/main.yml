@@ -1,12 +1,9 @@
 ---
-- name: Copy modified application.conf to vagrant vm
-  copy: src=application.conf dest=/home/vagrant/application.conf
-
 - name: Launch chatroom container
   docker_container: 
     name: chatroom
     image: tumluliu/vagrant-chatroom
-    command: sbt run
+    command: ./play-java-chatroom-example -Dconfig.file=../conf/localtest.conf
     state: started
     pull: true
     interactive: false
@@ -14,5 +11,3 @@
     detach: true
     ports: 
       - "{{ chatroom_port }}:{{ chatroom_port }}"
-    volumes:
-      - /home/vagrant/application.conf:/chatroom/target/scala-2.12/classes/application.conf
