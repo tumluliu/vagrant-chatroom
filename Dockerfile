@@ -19,6 +19,15 @@ RUN \
 # Define working directory
 WORKDIR /chatroom
 
-# Compile chatroom with sbt
+# Package chatroom with sbt
 RUN \
   sbt clean test dist
+
+# Unzip chatroom package to /chatroom/deploy/
+RUN \
+  unzip target/universal/play-java-chatroom-example-*.zip
+
+ENV DEPLOY_DIR `find target/universal -maxdepth 1 -type d -name 'play-java-chatroom-example*' -print -quit`
+
+# Enter the deployment bin dir
+WORKDIR $DEPLOY_DIR/bin
