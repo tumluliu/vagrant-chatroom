@@ -27,7 +27,10 @@ RUN \
 RUN \
   unzip target/universal/play-java-chatroom-example-*.zip
 
+
 ENV DEPLOY_DIR `find target/universal -maxdepth 1 -type d -name 'play-java-chatroom-example*' -print -quit`
 
 # Enter the deployment bin dir
 WORKDIR $DEPLOY_DIR/bin
+
+COPY conf/localtest.conf ../conf/
