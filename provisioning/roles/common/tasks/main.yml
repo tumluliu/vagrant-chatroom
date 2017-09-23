@@ -1,0 +1,15 @@
+---
+- name: Update apt cache
+  apt: update_cache=yes
+- name: Install python-pip
+  apt:
+    name: python-pip
+    state: latest
+- name: Upgrade pip
+  pip:
+    name: pip
+    extra_args: --upgrade
+- name: Install docker-py
+  pip:
+    name: docker-py
+    state: latest

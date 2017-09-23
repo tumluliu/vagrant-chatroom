@@ -1,0 +1,5 @@
+# Port that nginx is listening
+nginx_port: 8000
+
+# Port that running chatroom
+chatroom_port: 9000

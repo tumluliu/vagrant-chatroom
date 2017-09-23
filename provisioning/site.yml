@@ -1,0 +1,8 @@
+---
+- name: Install nginx and launch chatroom container
+  hosts: all
+  become: yes
+  roles:
+    - common
+    - chatroom-container
+    - nginx
