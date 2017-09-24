@@ -3,7 +3,6 @@
   docker_container: 
     name: chatroom
     image: tumluliu/vagrant-chatroom
-    command: ./play-java-chatroom-example -Dconfig.file=../conf/localtest.conf
     state: started
     pull: true
     interactive: false
