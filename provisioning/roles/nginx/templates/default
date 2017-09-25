@@ -8,15 +8,20 @@ server {
 
     location / {
         proxy_pass http://chatroom-container;
-        proxy_set_header Host $http_host;
+        proxy_set_header Host 'localhost:{{ hidden_chatroom_port }}';
         proxy_redirect off;
         proxy_buffering off;
     }
+}
+
+server {
+    listen {{ hidden_chatroom_port }};
 
     location /chat {
         proxy_pass http://chatroom-container/chat;
         proxy_http_version 1.1;
-        proxy_set_header Host $http_host;
+        proxy_set_header Host 'localhost:{{ hidden_chatroom_port }}';
+        proxy_set_header Origin 'http://localhost:{{ hidden_chatroom_port }}';
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
     }
