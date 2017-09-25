@@ -1,7 +1,4 @@
 ---
-- name: Copy modified application.conf to vagrant vm
-  copy: src=application.conf dest=/home/vagrant/application.conf
-
 - name: Launch chatroom container
   docker_container: 
     name: chatroom
